@@ -22,10 +22,9 @@ class ClientRepository implements IClientsRepository{
     }
 
     public async findByEmail(email: string): Promise<Client | undefined> {
-        const client =  await this.ormRepository.findOne({
-            where:{email}
+        return this.ormRepository.findOne({
+            where:{email},
         });
-        return client;
     }
 
     public async create({name,email,telephone,cpf}: ICreateClientDTO): Promise<Client> {
@@ -33,10 +32,10 @@ class ClientRepository implements IClientsRepository{
             name,
             email,
             telephone,
-            cpf
+            cpf,
         });
         await this.ormRepository.save(client);
-        return client
+        return client;
     }
 
     public async save(client: Client): Promise<Client> {

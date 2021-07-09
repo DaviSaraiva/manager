@@ -26,9 +26,6 @@ class Client {
 
     @UpdateDateColumn()
     update_at: Date;
-    
-    @Column()
-    active: boolean;
 
 }
 
