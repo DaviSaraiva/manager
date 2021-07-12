@@ -14,7 +14,7 @@ class Client {
     @Column()
     telephone: string;
 
-    @Column()
+    @Column({ unique: true })
     cpf: string;
 
     @Column()

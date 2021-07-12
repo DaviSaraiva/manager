@@ -29,10 +29,13 @@ export default class CreateClients1625769223335 implements MigrationInterface {
                 {
                     name: 'cpf',
                     type: 'varchar',
+                    isUnique: true,
                 },
                 {
                     name: 'code',
-                    type: 'varchar',
+                    type: 'uuid',
+                    generationStrategy: 'uuid',
+                    default: 'uuid_generate_v4()',
                 },
                 {
                     name: 'create_at',
