@@ -10,6 +10,12 @@ class ClientRepository implements IClientsRepository{
     constructor(){
         this.ormRepository = getRepository(Client);
     }
+    
+    public async findByCpf(cpf: string): Promise<Client | undefined> {
+        return this.ormRepository.findOne({
+            where:{cpf},
+        });   
+    }
 
     public async findAll(): Promise<Client[]> {
         return this.ormRepository.find();
