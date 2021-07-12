@@ -14,7 +14,7 @@ Ativar e desativar usuario.
 Criacão do metodo de criar e listar clientes.
 
 # Banco utilizado
-Postegres
+Postgresql
 
 # Yarn
 
