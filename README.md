@@ -3,11 +3,15 @@
 Projeto com typescript e node com banco de dados postgres.
 
 # Coisa ja prontas
-*Projeto com cadastro
-*Login
-*Altenticacao
-*Ativar e desativar usuario
-*Criacão do metodo de criar e listar clientes.
+Projeto com cadastro.
+
+Login.
+
+Altenticacao.
+
+Ativar e desativar usuario.
+
+Criacão do metodo de criar e listar clientes.
 
 # Banco utilizado
 Postegres
