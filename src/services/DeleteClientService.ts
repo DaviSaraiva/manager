@@ -1,17 +1,22 @@
 import IClientsRepository from "../repositories/IClientsRepository";
-import Client from "../models/Client";
 import AppError from "../errors/AppError";
-
-interface IRequest{
-    name: string;
-    email: string;
-    telephone: string;
-    cpf: string;
-}
 
 class DeleteClientService{
     
+    private clientRepository : IClientsRepository;
     
-}
+    constructor(clientRepository : IClientsRepository){
+        this.clientRepository = clientRepository;
+    }
 
+    public async execute(id:string): Promise<void>{
+        const client = await this.clientRepository.findById(id);
+
+        if(!client){
+            throw new AppError('Clinets não encontrado', 400);
+        }
+        await this.clientRepository.delete(id); 
+        
+    }
+}
 export default DeleteClientService;
