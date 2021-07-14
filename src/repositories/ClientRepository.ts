@@ -1,5 +1,5 @@
 import IClientsRepository from "./IClientsRepository";
-import { Repository, getRepository } from "typeorm";
+import { Repository, getRepository, Like } from "typeorm";
 import Client from "../models/Client";
 import ICreateClientDTO from "../dtos/ICreateClientDTO";
 
@@ -9,6 +9,12 @@ class ClientRepository implements IClientsRepository{
 
     constructor(){
         this.ormRepository = getRepository(Client);
+    }
+    public async findByName(name: string): Promise<Client[] | undefined> {
+        return this.ormRepository.find({
+            name: Like(`%${name}%`), 
+        });
+        //nem presica de service
     }
     public async findAllPaginated(page: number): Promise<[Client[], number]> {
         return this.ormRepository.findAndCount({

@@ -21,6 +21,15 @@ class ClientController {
          });
         return response.json(clients);
     }
+
+    public async search(request: Request, response: Response): Promise<Response>{
+        const {name} = request.query;
+
+        const clientRepository = new ClientRepository();
+        const clients = await clientRepository.findByName(name?.toString() || '');
+
+        return response.json(clients);
+    }
     
     public async create(request: Request, response: Response): Promise<Response>{
         //criação de clients
