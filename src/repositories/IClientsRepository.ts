@@ -10,4 +10,5 @@ export default interface IClientsRepository {
    findByCpf(cpf: string): Promise<Client | undefined>;
    create(createClientDTO: ICreateClientDTO): Promise<Client>;
    save(client:Client): Promise<Client>;
+   findAllPaginated(page:number): Promise<[Client[], number]>; //o number no typeorm vai retorna a quantidade total de clients
 }

@@ -2,12 +2,23 @@ import ClientRepository from "../repositories/ClientRepository";
 import { Request, Response } from "express";
 import CreateClientService from "../services/CreateClientService";
 import UpdateClientService from "../services/UpdateClientService";
+import PaginatedClientsService from "../services/PaginatedClientsService";
 
 
 class ClientController {
     public async index(request: Request, response: Response): Promise<Response>{
         const clientRepository = new ClientRepository();
         const clients = await clientRepository.findAll();
+        return response.json(clients);
+    }
+
+    public async paginated(request: Request, response: Response): Promise<Response>{
+        const {page} = request.query;
+        const clientRepository = new ClientRepository();
+        const clientsPaginated = new PaginatedClientsService(clientRepository);
+        const clients = await clientsPaginated.execute({ 
+            page: page!=undefined ? parseInt(page.toString(),10) : 0,
+         });
         return response.json(clients);
     }
     

@@ -5,8 +5,11 @@ const clientRoutes = Router();
 const clientController = new ClientController();
 
 clientRoutes.get('/',clientController.index);
+clientRoutes.get('/paginated',clientController.paginated);
 clientRoutes.post('/',clientController.create);
-clientRoutes.put('/:id',clientController.update); //vou alterar so uma coluna 
+clientRoutes.put('/:id',clientController.update); 
+
+
 
 
 export default clientRoutes;
