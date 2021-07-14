@@ -10,6 +10,9 @@ class ClientRepository implements IClientsRepository{
     constructor(){
         this.ormRepository = getRepository(Client);
     }
+    public async delete(id: string): Promise<void> {
+        this.ormRepository.delete(id);
+    }
     public async findByName(name: string): Promise<Client[] | undefined> {
         return this.ormRepository.find({
             name: Like(`%${name}%`), 
