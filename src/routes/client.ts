@@ -1,8 +1,11 @@
 import { Router } from "express";
 import ClientController from "../controller/ClientController";
+import authentication from "../middlewares/auth";
 
 const clientRoutes = Router();
 const clientController = new ClientController();
+
+clientRoutes.use(authentication);
 
 clientRoutes.get('/',clientController.index);
 clientRoutes.get('/paginated',clientController.paginated);
